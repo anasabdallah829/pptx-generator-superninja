@@ -1,0 +1,13 @@
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+--
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {

@@ -1,0 +1,21 @@
+@app.route('/save-config', methods=['POST'])
+def save_config():
+    config_data = request.json
+    session_data['placeholders_config'] = config_data
+    session_data['current_step'] = 3
+    return jsonify({'success': True, 'redirect': '/process'})
+
+@app.route('/process')
+def process():
+    if session_data['current_step'] < 3 or not session_data['placeholders_config']:
+        return render_template('error.html', message='Please configure placeholders first')
+    
+    return render_template('process.html', 
+                          placeholders_config=session_data['placeholders_config'],
+                          current_step=session_data['current_step'])
+
+@app.route('/upload-zip', methods=['POST'])
+def upload_zip():
+    if 'zip_file' not in request.files:
+        return jsonify({'success': False, 'error': 'No file uploaded'})
+    

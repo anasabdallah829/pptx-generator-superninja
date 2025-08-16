@@ -1,0 +1,50 @@
+                </div>
+                
+                <!-- Preview Slideshow (initially hidden) -->
+                <div id="preview-slideshow" class="preview-slideshow" style="display: none;">
+                    <h3>👁️ معاينة الشرائح</h3>
+                    <div class="slideshow-container">
+                        <div id="slideshow-content" class="slideshow-content">
+                            <!-- Slides will be added here dynamically -->
+                        </div>
+                        <div class="slideshow-controls">
+                            <button id="prev-slide" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                            <span id="slide-counter">1 / 1</span>
+                            <button id="next-slide" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button id="fullscreen-btn" class="slide-nav-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Fullscreen Slideshow Modal -->
+        <div id="fullscreen-slideshow" class="fullscreen-modal">
+            <div class="fullscreen-content">
+                <span class="close-fullscreen">&times;</span>
+                <div class="fullscreen-slide-container">
+                    <div id="fullscreen-slide" class="fullscreen-slide">
+                        <!-- Current slide content will be displayed here -->
+                    </div>
+                    <div class="fullscreen-controls">
+                        <button id="fullscreen-prev" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                        <span id="fullscreen-counter">1 / 1</span>
+                        <button id="fullscreen-next" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
+    </div>
+
+    <script>
+        // Pass configuration data to JavaScript
+        const placeholdersConfig = {{ placeholders_config|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/process.js') }}"></script>
+</body>
+</html>

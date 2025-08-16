@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🔄 نظام العروض التقديمية التفاعلية</h1>
+            <div class="progress-container">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">رفع الملف</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">الشريحة التفاعلية</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">المعاينة والتطبيق</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="step-1" class="step-content active">
+                <div class="upload-container">
+                    <h2>رفع ملف PowerPoint</h2>
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle"></i> ارفع ملف PowerPoint (.pptx) لتحليل القالب وإعداد الخيارات</p>
+                    </div>
+                    
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اسحب الملف هنا أو انقر للاختيار</p>
+                        <input type="file" id="pptx-upload" accept=".pptx" hidden>
+                    </div>
+                    
+                    <div id="previous-settings-container" class="previous-settings-container" style="display: none;">
+                        <button id="use-previous-settings" class="btn primary-btn">
+                            <i class="fas fa-history"></i> استخدام الإعدادات السابقة وإنتاج الملف النهائي
+                        </button>
+                    </div>
+                    
+                    <div id="upload-progress" class="progress-bar-container" style="display: none;">
+                        <div class="progress-bar"></div>
+                        <p class="progress-text">جاري التحليل...</p>
+                    </div>
+                    
+                    <div id="upload-error" class="error-message" style="display: none;"></div>
+                </div>
+                
+                <div class="instructions-container">
+                    <div class="collapsible">
+                        <h3><i class="fas fa-book"></i> تعليمات الاستخدام</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="instructions">
+                            <h4>🎯 كيفية استخدام التطبيق:</h4>
+                            <h5>الخطوة 1: رفع ملف PowerPoint</h5>
+                            <ul>
+                                <li>ارفع ملف PowerPoint (.pptx) يحتوي على القالب المطلوب</li>
+                                <li>سيتم تحليل الشريحة الأولى واستخراج جميع placeholders</li>
+                            </ul>
+                            
+                            <h5>الخطوة 2: إعداد Placeholders</h5>
+                            <ul>
+                                <li>ستظهر معاينة تفاعلية للشريحة مع جميع placeholders</li>
+                                <li>يمكنك تخصيص كل placeholder حسب احتياجاتك</li>
+                                <li>للصور: اختيار الترتيب أو عدم الاستبدال</li>
+                                <li>للنصوص: اختيار نوع المحتوى (ثابت، تاريخ، إلخ)</li>
+                            </ul>
+                            
+                            <h5>الخطوة 3: رفع الصور والمعالجة</h5>
+                            <ul>
+                                <li>ارفع ملف ZIP يحتوي على مجلدات الصور</li>
+                                <li>ابدأ المعالجة وفقاً للإعدادات المحددة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+</html>

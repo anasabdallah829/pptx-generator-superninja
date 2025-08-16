@@ -1,0 +1,21 @@
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        progress += 2;
+        if (progress > 90) {
+            clearInterval(progressInterval);
+        }
+        if (uploadProgress) {
+            const progressBar = uploadProgress.querySelector('.progress-bar');
+            if (progressBar) progressBar.style.width = `${progress}%`;
+        }
+    }, 200);
+    
+    // Upload the file and process
+    fetch('/upload-zip', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        clearInterval(progressInterval);
+        

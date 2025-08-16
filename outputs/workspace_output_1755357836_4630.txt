@@ -1,0 +1,21 @@
+    // Show progress bar
+    if (uploadProgress) {
+        uploadProgress.style.display = 'block';
+        const progressBar = uploadProgress.querySelector('.progress-bar');
+        const progressText = uploadProgress.querySelector('.progress-text');
+        if (progressBar) progressBar.style.width = '0%';
+        if (progressText) progressText.textContent = 'جاري المعالجة...';
+    }
+    
+    // Get options
+    const imageOrder = document.querySelector('input[name="image-order"]:checked')?.value || 'alphabetical';
+    const skipEmptyFolders = document.getElementById('skip-empty-folders')?.checked || true;
+    
+    // Create FormData and upload the file
+    const formData = new FormData();
+    formData.append('zip_file', file);
+    formData.append('image_order', imageOrder);
+    formData.append('skip_empty_folders', skipEmptyFolders);
+    
+    // Simulate progress
+    let progress = 0;

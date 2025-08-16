@@ -1,0 +1,30 @@
+Archive:  interactive_presentation.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2025-08-16 14:59   static/
+        0  2025-08-16 15:04   static/css/
+    18236  2025-08-16 15:04   static/css/styles.css
+        0  2025-08-16 15:09   static/js/
+     9557  2025-08-16 15:04   static/js/main.js
+     6132  2025-08-16 15:05   static/js/upload.js
+    45175  2025-08-16 15:07   static/js/configure.js
+    21364  2025-08-16 15:09   static/js/process.js
+        0  2025-08-16 14:59   static/images/
+        0  2025-08-16 15:02   templates/
+     5313  2025-08-16 15:01   templates/index.html
+     5975  2025-08-16 15:01   templates/configure.html
+    10261  2025-08-16 15:02   templates/process.html
+     1359  2025-08-16 15:02   templates/error.html
+    20778  2025-08-16 15:00   app.py
+       63  2025-08-16 15:09   requirements.txt
+     5071  2025-08-16 15:10   README.md
+      121  2025-08-16 15:10   run.py
+      423  2025-08-16 15:10   Dockerfile
+      403  2025-08-16 15:10   .gitignore
+      177  2025-08-16 15:11   docker-compose.yml
+      365  2025-08-16 15:11   start.sh
+      853  2025-08-16 15:11   test.py
+      279  2025-08-16 15:12   install.bat
+      129  2025-08-16 15:12   start.bat
+---------                     -------
+   152034                     25 files

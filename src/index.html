@@ -1,16 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>PPTX Generator</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-  <div id="app">
-    <h1>PPTX Generator</h1>
-    <div class="container">
-      <!-- Add content here -->
+    <div class="app-container">
+        <header>
+            <h1>نظام العروض التقديمية التفاعلية</h1>
+            <div class="progress-container">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">رفع الملف</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">الشريحة التفاعلية</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">المعاينة والتطبيق</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Step 1: File Upload -->
+            <section id="step-1" class="step-content active">
+                <div class="upload-container">
+                    <h2>رفع الملف المضغوط</h2>
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اسحب الملف هنا أو انقر للاختيار</p>
+                        <input type="file" id="file-upload" accept=".zip" hidden>
+                    </div>
+                    <div class="previous-settings-container" style="display: none;">
+                        <button id="use-previous-settings" class="btn primary-btn">
+                            <i class="fas fa-history"></i> استخدام الإعدادات السابقة وإنتاج الملف النهائي
+                        </button>
+                    </div>
+                    <div class="buttons-container">
+                        <button id="next-to-step-2" class="btn primary-btn" disabled>التالي</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Interactive Slide -->
+            <section id="step-2" class="step-content">
+                <div class="interactive-slide-container">
+                    <h2>الشريحة التفاعلية</h2>
+                    <div class="slide-preview">
+                        <div class="slide-content" id="interactive-slide">
+                            <!-- Interactive elements will be added here dynamically -->
+                        </div>
+                    </div>
+                    <div class="slide-controls">
+                        <div class="control-panel">
+                            <h3>خيارات التحكم</h3>
+                            <div id="element-options" class="element-options">
+                                <!-- Options will appear here when an element is clicked -->
+                                <p class="no-selection">انقر على عنصر في الشريحة لعرض الخيارات</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statistics-container">
+                        <div class="statistics" id="slide-statistics">
+                            <!-- Statistics will be displayed here -->
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <button id="back-to-step-1" class="btn secondary-btn">السابق</button>
+                        <button id="next-to-step-3" class="btn primary-btn">التالي</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Preview and Apply -->
+            <section id="step-3" class="step-content">
+                <div class="preview-container">
+                    <h2>معاينة الشرائح</h2>
+                    <div class="slideshow-container">
+                        <div class="slideshow-content" id="slideshow">
+                            <!-- Slides will be added here dynamically -->
+                        </div>
+                        <div class="slideshow-controls">
+                            <button id="prev-slide" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                            <span id="slide-counter">1 / 1</span>
+                            <button id="next-slide" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button id="fullscreen-btn" class="slide-nav-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="statistics-container">
+                        <div class="statistics" id="preview-statistics">
+                            <!-- Statistics will be displayed here -->
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <button id="back-to-step-2" class="btn secondary-btn">السابق</button>
+                        <button id="apply-changes" class="btn primary-btn">تطبيق وإنتاج الملف النهائي</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
     </div>
-  </div>
-  <script src="js/app.js"></script>
+
+    <!-- Modal for element options -->
+    <div id="element-options-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-element-title">خيارات العنصر</h3>
+            <div id="modal-options-container">
+                <!-- Options will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen slideshow modal -->
+    <div id="fullscreen-slideshow" class="fullscreen-modal">
+        <div class="fullscreen-content">
+            <span class="close-fullscreen">&times;</span>
+            <div class="fullscreen-slide-container">
+                <div id="fullscreen-slide" class="fullscreen-slide">
+                    <!-- Current slide content will be displayed here -->
+                </div>
+                <div class="fullscreen-controls">
+                    <button id="fullscreen-prev" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                    <span id="fullscreen-counter">1 / 1</span>
+                    <button id="fullscreen-next" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/fileUpload.js"></script>
+    <script src="js/interactiveSlide.js"></script>
+    <script src="js/slidePreview.js"></script>
+    <script src="js/settings.js"></script>
 </body>
 </html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعداد Placeholders - نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>⚙️ إعداد Placeholders</h1>
+            <div class="progress-container">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">رفع الملف</div>
+                </div>
+                <div class="step active" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">الشريحة التفاعلية</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">المعاينة والتطبيق</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="step-2" class="step-content active">
+                <div class="navigation-buttons">
+                    <button id="back-to-step-1" class="btn secondary-btn">
+                        <i class="fas fa-arrow-right"></i> العودة للخطوة السابقة
+                    </button>
+                    <button id="next-to-step-3" class="btn primary-btn">
+                        <i class="fas fa-arrow-left"></i> المتابعة للمعالجة
+                    </button>
+                </div>
+
+                <h2>👁️ معاينة القالب</h2>
+                
+                <!-- Interactive Slide Preview -->
+                <div class="slide-preview-container">
+                    <div id="interactive-slide" class="interactive-slide">
+                        <!-- Slide will be rendered here dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Statistics -->
+                <div class="statistics-container">
+                    <div id="slide-statistics" class="statistics">
+                        <!-- Statistics will be rendered here dynamically -->
+                    </div>
+                </div>
+                
+                <div class="configuration-container">
+                    <!-- Image Placeholders Configuration -->
+                    <div id="image-config-section" class="config-section">
+                        <h3>🖼️ إعدادات الصور</h3>
+                        <div id="image-placeholders-container" class="placeholders-container">
+                            <!-- Image placeholders will be added here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Text Placeholders Configuration -->
+                    <div id="text-config-section" class="config-section">
+                        <h3>📝 إعدادات النصوص</h3>
+                        <div id="text-placeholders-container" class="placeholders-container">
+                            <!-- Text placeholders will be added here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Configuration Summary -->
+                    <div class="config-summary">
+                        <div class="collapsible">
+                            <h3><i class="fas fa-clipboard-list"></i> عرض ملخص الإعدادات</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapsible-content">
+                            <div id="config-summary-content" class="summary-content">
+                                <!-- Summary will be added here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button id="back-to-step-1-bottom" class="btn secondary-btn">
+                        <i class="fas fa-arrow-right"></i> العودة للخطوة السابقة
+                    </button>
+                    <button id="next-to-step-3-bottom" class="btn primary-btn">
+                        <i class="fas fa-arrow-left"></i> المتابعة للمعالجة
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Element Options Modal -->
+        <div id="element-options-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="modal-element-title">خيارات العنصر</h3>
+                <div id="modal-options-container">
+                    <!-- Options will be added here dynamically -->
+                </div>
+                <div class="modal-buttons">
+                    <button id="save-element-options" class="btn primary-btn">حفظ</button>
+                    <button id="cancel-element-options" class="btn secondary-btn">إلغاء</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
+    </div>
+
+    <script>
+        // Pass slide analysis data to JavaScript
+        const slideAnalysis = {{ slide_analysis|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/configure.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+    const usePreviousSettingsButton = document.getElementById('use-previous-settings');
+    if (usePreviousSettingsButton) {
+        usePreviousSettingsButton.addEventListener('click', usePreviousSettings);
+    }
+}
+
+/**
+ * Check if there are previous settings saved
+ */
+function checkPreviousSettings() {
+    const previousSettingsContainer = document.getElementById('previous-settings-container');
+    if (!previousSettingsContainer) return;
+    
+    const hasPrevSettings = hasPreviousSettings();
+    previousSettingsContainer.style.display = hasPrevSettings ? 'block' : 'none';
+}
+
+/**
+ * Handle file selection from input or drop
+ */
+function handleFileSelection() {
+    const fileInput = document.getElementById('pptx-upload');
+    const uploadArea = document.getElementById('upload-area');
+    const uploadProgress = document.getElementById('upload-progress');
+    const uploadError = document.getElementById('upload-error');
+    
+    if (!fileInput || !fileInput.files.length) return;
+    
+    const file = fileInput.files[0];
+    
+    // Check if file is a PowerPoint file
+    if (!file.name.endsWith('.pptx')) {
+        uploadError.textContent = 'الرجاء اختيار ملف PowerPoint بصيغة .pptx فقط.';

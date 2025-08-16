@@ -1,0 +1,41 @@
+                <div id="results-section" class="results-section" style="display: none;">
+                    <h3>🎉 تم الانتهاء من المعالجة بنجاح!</h3>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-file-powerpoint"></i></div>
+                            <div class="stat-value" id="slides-count">0</div>
+                            <div class="stat-label">الشرائح المُضافة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-folder"></i></div>
+                            <div class="stat-value" id="folders-count">0</div>
+                            <div class="stat-label">المجلدات المُعالجة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-images"></i></div>
+                            <div class="stat-value" id="images-count">0</div>
+                            <div class="stat-label">إجمالي الصور</div>
+                        </div>
+                    </div>
+                    
+                    <div class="download-section">
+                        <button id="download-result" class="btn primary-btn">
+                            <i class="fas fa-download"></i> تحميل الملف المُحدث
+                        </button>
+                    </div>
+                    
+                    <div class="restart-section">
+                        <button id="restart-process" class="btn secondary-btn">
+                            <i class="fas fa-redo"></i> بدء عملية جديدة
+                        </button>
+                    </div>
+                    
+                    <!-- Template Settings Management Section -->
+                    <div class="template-settings-management">
+                        <h4>⚙️ إدارة إعدادات القالب</h4>
+                        <p>يمكنك تصدير إعدادات القالب الحالية لاستخدامها لاحقًا أو استيراد إعدادات من ملف.</p>
+                        <div class="template-settings-actions">
+                            <button id="export-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-export"></i> تصدير إعدادات القالب
+                            </button>

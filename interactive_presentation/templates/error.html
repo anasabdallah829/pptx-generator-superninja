@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطأ - نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>⚠️ خطأ</h1>
+        </header>
+
+        <main>
+            <section class="error-container">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>حدث خطأ</h2>
+                <p class="error-message">{{ message }}</p>
+                <div class="error-actions">
+                    <a href="/" class="btn primary-btn">
+                        <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
+    </div>
+</body>
+</html>

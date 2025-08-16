@@ -1,0 +1,65 @@
+                if (data.success) {
+                    showNotification('تم استيراد إعدادات القالب بنجاح!', 'success');
+                    
+                    // Reload the page to apply settings
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showNotification(data.error || 'حدث خطأ أثناء استيراد الإعدادات!', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error importing settings:', error);
+                showNotification('حدث خطأ أثناء استيراد الإعدادات!', 'error');
+            });
+        } catch (error) {
+            console.error('Error parsing settings file:', error);
+            showNotification('ملف الإعدادات غير صالح!', 'error');
+        }
+    };
+    
+--
+        if (data.success) {
+            // Complete progress bar
+            if (uploadProgress) {
+                const progressBar = uploadProgress.querySelector('.progress-bar');
+                const progressText = uploadProgress.querySelector('.progress-text');
+                if (progressBar) progressBar.style.width = '100%';
+                if (progressText) progressText.textContent = 'تم المعالجة بنجاح!';
+            }
+            
+            // Save output filename
+            outputFilename = data.output_filename;
+            
+            // Show results section
+            showResults(data);
+            
+            // Show processing details
+            showProcessingDetails(data.details);
+            
+            // Hide upload section
+            const uploadContainer = document.querySelector('.upload-container');
+            if (uploadContainer) {
+--
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                showNotification('حدث خطأ أثناء إعادة التشغيل', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error restarting process:', error);
+            showNotification('حدث خطأ أثناء إعادة التشغيل', 'error');
+        });
+}
+
+/**
+ * Show the previous slide
+ */
+function showPreviousSlide() {
+    const slides = document.querySelectorAll('#slideshow-content .slide');
+    if (!slides.length) return;
+    
+    let activeIndex = -1;
+    slides.forEach((slide, index) => {

@@ -1,0 +1,50 @@
+from flask import Flask, render_template, request, jsonify, send_file
+import os
+import io
+import zipfile
+import tempfile
+import shutil
+import json
+from datetime import datetime, date
+from pptx import Presentation
+from pptx.enum.shapes import PP_PLACEHOLDER, MSO_SHAPE_TYPE
+from pptx.util import Inches
+import random
+from PIL import Image
+from PIL.ExifTags import TAGS
+import base64
+
+app = Flask(__name__)
+
+# Global variables to store session data
+session_data = {
+    'current_step': 1,
+    'pptx_data': None,
+    'slide_analysis': None,
+    'placeholders_config': {},
+    'processing_details': [],
+    'show_details_needed': False,
+    'temp_dir': None
+}
+
+def add_detail(message, detail_type="info"):
+    """إضافة تفصيل جديد إلى قائمة التفاصيل"""
+    session_data['processing_details'].append({
+        'message': message,
+        'type': detail_type
+    })
+    
+    if detail_type in ['error', 'warning']:
+        session_data['show_details_needed'] = True
+
+def clear_details():
+    """مسح جميع التفاصيل وإعادة تعيين حالة الإظهار"""
+    session_data['processing_details'] = []
+    session_data['show_details_needed'] = False
+
+def analyze_slide_placeholders(prs):
+    """تحليل جميع placeholders في الشريحة الأولى مع ضبط الإحداثيات"""
+    if len(prs.slides) == 0:
+        return None
+    
+    first_slide = prs.slides[0]

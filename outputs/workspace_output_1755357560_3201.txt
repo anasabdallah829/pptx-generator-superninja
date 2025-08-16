@@ -1,0 +1,10 @@
+function usePreviousSettings() {
+    const settings = loadSettings();
+    
+    if (settings) {
+        // TODO: Implement using previous settings to generate output
+        showNotification('سيتم تنفيذ هذه الميزة قريباً', 'info');
+    } else {
+        showNotification('لا يمكن العثور على إعدادات سابقة!', 'error');
+    }
+}

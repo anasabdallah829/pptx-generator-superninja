@@ -1,0 +1,8 @@
+258:@app.route('/')
+273:@app.route('/upload-pptx', methods=['POST'])
+309:@app.route('/configure')
+318:@app.route('/save-config', methods=['POST'])
+325:@app.route('/process')
+334:@app.route('/upload-zip', methods=['POST'])
+472:@app.route('/download/<filename>')
+484:@app.route('/reset')

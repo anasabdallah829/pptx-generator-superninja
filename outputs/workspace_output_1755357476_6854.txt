@@ -1,0 +1,14 @@
+30:def add_detail(message, detail_type="info"):
+40:def clear_details():
+45:def analyze_slide_placeholders(prs):
+67:    def clamp_percent(val):
+126:def get_image_date(image_path):
+147:def apply_configured_placeholders(slide, folder_path, folder_name, slide_analysis, placeholders_config):
+259:def index():
+274:def upload_pptx():
+310:def configure():
+319:def save_config():
+326:def process():
+335:def upload_zip():
+473:def download_file(filename):
+485:def reset():

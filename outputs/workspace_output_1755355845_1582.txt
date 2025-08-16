@@ -1,0 +1,2 @@
+Server is running on port 8888
+Open your browser and navigate to http://localhost:8888

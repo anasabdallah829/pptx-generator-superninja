@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/interactive_presentation/run.py", line 2, in <module>
+    from app import app
+  File "/workspace/interactive_presentation/app.py", line 494
+    global session_data
+    ^^^^^^^^^^^^^^^^^^^
+SyntaxError: name 'session_data' is used prior to global declaration

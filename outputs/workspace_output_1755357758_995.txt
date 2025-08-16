@@ -1,0 +1,11 @@
+                            <button id="export-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-export"></i> تصدير إعدادات القالب
+                            </button>
+                            <button id="import-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-import"></i> استيراد إعدادات القالب
+                            </button>
+                            <input type="file" id="import-settings-file-result" accept=".json" hidden>
+                        </div>
+                    </div>
+                </div>
+                

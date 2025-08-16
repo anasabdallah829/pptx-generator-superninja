@@ -1,0 +1,50 @@
+/**
+ * Upload JavaScript
+ * Handles file upload functionality in step 1
+ */
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initFileUpload();
+    checkPreviousSettings();
+});
+
+/**
+ * Initialize file upload functionality
+ */
+function initFileUpload() {
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('pptx-upload');
+    
+    if (!uploadArea || !fileInput) return;
+    
+    // Click on upload area to trigger file input
+    uploadArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    // Handle file selection
+    fileInput.addEventListener('change', handleFileSelection);
+    
+    // Handle drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        
+        if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            handleFileSelection();
+        }
+    });
+    
+    // Handle previous settings button
+    const usePreviousSettingsButton = document.getElementById('use-previous-settings');

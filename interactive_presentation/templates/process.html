@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معالجة الملفات - نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div id="loading-message" class="loading-message">جاري المعالجة...</div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <h1>🚀 معالجة الملفات</h1>
+            <div class="progress-container">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">رفع الملف</div>
+                </div>
+                <div class="step completed" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">الشريحة التفاعلية</div>
+                </div>
+                <div class="step active" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">المعاينة والتطبيق</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="step-3" class="step-content active">
+                <div class="navigation-buttons">
+                    <button id="back-to-step-2" class="btn secondary-btn">
+                        <i class="fas fa-arrow-right"></i> العودة لإعداد Placeholders
+                    </button>
+                    
+                    <!-- Template Settings Management -->
+                    <div class="template-settings-buttons">
+                        <button id="export-template-settings" class="btn info-btn">
+                            <i class="fas fa-file-export"></i> تصدير إعدادات القالب
+                        </button>
+                        <button id="import-template-settings" class="btn info-btn">
+                            <i class="fas fa-file-import"></i> استيراد إعدادات القالب
+                        </button>
+                        <input type="file" id="import-settings-file" accept=".json" hidden>
+                    </div>
+                </div>
+
+                <h2>📂 رفع ملف الصور</h2>
+                
+                <div class="upload-container">
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle"></i> ارفع ملف ZIP يحتوي على مجلدات صور</p>
+                    </div>
+                    
+                    <div class="upload-area" id="zip-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اسحب الملف هنا أو انقر للاختيار</p>
+                        <input type="file" id="zip-upload" accept=".zip" hidden>
+                    </div>
+                    
+                    <div id="zip-upload-progress" class="progress-bar-container" style="display: none;">
+                        <div class="progress-bar"></div>
+                        <p class="progress-text">جاري المعالجة...</p>
+                    </div>
+                    
+                    <div id="zip-upload-error" class="error-message" style="display: none;"></div>
+                </div>
+                
+                <!-- Configuration Summary -->
+                <div class="config-summary">
+                    <div class="collapsible">
+                        <h3><i class="fas fa-clipboard-list"></i> ملخص الإعدادات المحددة</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div id="process-config-summary" class="summary-content">
+                            <!-- Summary will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Options -->
+                <div class="additional-options">
+                    <h3>⚙️ خيارات إضافية</h3>
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label>ترتيب الصور في المجلدات:</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="image-order" value="alphabetical" checked>
+                                    <span>بالترتيب الأبجدي</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="image-order" value="random">
+                                    <span>عشوائي</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>
+                                <input type="checkbox" id="skip-empty-folders" checked>
+                                <span>تخطي المجلدات الفارغة</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-buttons">
+                    <button id="start-processing" class="btn primary-btn" disabled>
+                        <i class="fas fa-rocket"></i> بدء المعالجة
+                    </button>
+                </div>
+                
+                <!-- Results Section (initially hidden) -->
+                <div id="results-section" class="results-section" style="display: none;">
+                    <h3>🎉 تم الانتهاء من المعالجة بنجاح!</h3>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-file-powerpoint"></i></div>
+                            <div class="stat-value" id="slides-count">0</div>
+                            <div class="stat-label">الشرائح المُضافة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-folder"></i></div>
+                            <div class="stat-value" id="folders-count">0</div>
+                            <div class="stat-label">المجلدات المُعالجة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-images"></i></div>
+                            <div class="stat-value" id="images-count">0</div>
+                            <div class="stat-label">إجمالي الصور</div>
+                        </div>
+                    </div>
+                    
+                    <div class="download-section">
+                        <button id="download-result" class="btn primary-btn">
+                            <i class="fas fa-download"></i> تحميل الملف المُحدث
+                        </button>
+                    </div>
+                    
+                    <div class="restart-section">
+                        <button id="restart-process" class="btn secondary-btn">
+                            <i class="fas fa-redo"></i> بدء عملية جديدة
+                        </button>
+                    </div>
+                    
+                    <!-- Template Settings Management Section -->
+                    <div class="template-settings-management">
+                        <h4>⚙️ إدارة إعدادات القالب</h4>
+                        <p>يمكنك تصدير إعدادات القالب الحالية لاستخدامها لاحقًا أو استيراد إعدادات من ملف.</p>
+                        <div class="template-settings-actions">
+                            <button id="export-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-export"></i> تصدير إعدادات القالب
+                            </button>
+                            <button id="import-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-import"></i> استيراد إعدادات القالب
+                            </button>
+                            <input type="file" id="import-settings-file-result" accept=".json" hidden>
+                        </div>
+                    </div>
+                    
+                    <!-- Template Settings Management Section -->
+                    <div class="template-settings-management">
+                        <h4>⚙️ إدارة إعدادات القالب</h4>
+                        <p>يمكنك تصدير إعدادات القالب الحالية لاستخدامها لاحقًا أو استيراد إعدادات من ملف.</p>
+                        <div class="template-settings-actions">
+                            <button id="export-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-export"></i> تصدير إعدادات القالب
+                            </button>
+                            <button id="import-template-settings-result" class="btn info-btn">
+                                <i class="fas fa-file-import"></i> استيراد إعدادات القالب
+                            </button>
+                            <input type="file" id="import-settings-file-result" accept=".json" hidden>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Processing Details Section -->
+                <div id="processing-details-container" class="processing-details-container" style="display: none;">
+                    <div class="collapsible">
+                        <h3><i class="fas fa-clipboard"></i> تفاصيل المعالجة</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <div id="processing-details" class="processing-details">
+                            <!-- Details will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview Slideshow (initially hidden) -->
+                <div id="preview-slideshow" class="preview-slideshow" style="display: none;">
+                    <h3>👁️ معاينة الشرائح</h3>
+                    <div class="slideshow-container">
+                        <div id="slideshow-content" class="slideshow-content">
+                            <!-- Slides will be added here dynamically -->
+                        </div>
+                        <div class="slideshow-controls">
+                            <button id="prev-slide" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                            <span id="slide-counter">1 / 1</span>
+                            <button id="next-slide" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button id="fullscreen-btn" class="slide-nav-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Fullscreen Slideshow Modal -->
+        <div id="fullscreen-slideshow" class="fullscreen-modal">
+            <div class="fullscreen-content">
+                <span class="close-fullscreen">&times;</span>
+                <div class="fullscreen-slide-container">
+                    <div id="fullscreen-slide" class="fullscreen-slide">
+                        <!-- Current slide content will be displayed here -->
+                    </div>
+                    <div class="fullscreen-controls">
+                        <button id="fullscreen-prev" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                        <span id="fullscreen-counter">1 / 1</span>
+                        <button id="fullscreen-next" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 نظام العروض التقديمية التفاعلية</p>
+        </footer>
+    </div>
+
+    <script>
+        // Pass configuration data to JavaScript
+        const placeholdersConfig = {{ placeholders_config|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/process.js') }}"></script>
+</body>
+</html>

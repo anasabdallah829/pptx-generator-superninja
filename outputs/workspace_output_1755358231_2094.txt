@@ -1,0 +1,16 @@
+                <div id="preview-slideshow" class="preview-slideshow" style="display: none;">
+                    <h3>👁️ معاينة الشرائح</h3>
+                    <div class="slideshow-container">
+                        <div id="slideshow-content" class="slideshow-content">
+                            <!-- Slides will be added here dynamically -->
+                        </div>
+                        <div class="slideshow-controls">
+                            <button id="prev-slide" class="slide-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                            <span id="slide-counter">1 / 1</span>
+                            <button id="next-slide" class="slide-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button id="fullscreen-btn" class="slide-nav-btn"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>

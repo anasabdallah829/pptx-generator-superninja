@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معالجة الملفات - نظام العروض التقديمية التفاعلية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🚀 معالجة الملفات</h1>
+            <div class="progress-container">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">رفع الملف</div>
+                </div>
+                <div class="step completed" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">الشريحة التفاعلية</div>
+                </div>
+                <div class="step active" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">المعاينة والتطبيق</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="step-3" class="step-content active">
+                <div class="navigation-buttons">
+                    <button id="back-to-step-2" class="btn secondary-btn">
+                        <i class="fas fa-arrow-right"></i> العودة لإعداد Placeholders
+                    </button>
+                </div>
+
+                <h2>📂 رفع ملف الصور</h2>
+                
+                <div class="upload-container">
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle"></i> ارفع ملف ZIP يحتوي على مجلدات صور</p>
+                    </div>
+                    
+                    <div class="upload-area" id="zip-upload-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اسحب الملف هنا أو انقر للاختيار</p>
+                        <input type="file" id="zip-upload" accept=".zip" hidden>
+                    </div>

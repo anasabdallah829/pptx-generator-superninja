@@ -1,0 +1,21 @@
+    .then(response => response.json())
+    .then(data => {
+        clearInterval(progressInterval);
+        
+        if (data.success) {
+            // Complete progress bar
+            if (uploadProgress) {
+                const progressBar = uploadProgress.querySelector('.progress-bar');
+                const progressText = uploadProgress.querySelector('.progress-text');
+                if (progressBar) progressBar.style.width = '100%';
+                if (progressText) progressText.textContent = 'تم المعالجة بنجاح!';
+            }
+            
+            // Save output filename
+            outputFilename = data.output_filename;
+            
+            // Show results section
+            showResults(data);
+            
+            // Show processing details
+            showProcessingDetails(data.details);

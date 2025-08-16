@@ -1,0 +1,26 @@
+function saveConfigAndProceed() {
+    // Save configuration to server
+    fetch('/save-config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(placeholdersConfig)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Save configuration to localStorage for potential use later
+            saveSettings(placeholdersConfig);
+            
+            // Redirect to process page
+            window.location.href = data.redirect;
+        } else {
+            showNotification('حدث خطأ أثناء حفظ الإعدادات', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error saving configuration:', error);
+        showNotification('حدث خطأ أثناء حفظ الإعدادات', 'error');
+    });
+}

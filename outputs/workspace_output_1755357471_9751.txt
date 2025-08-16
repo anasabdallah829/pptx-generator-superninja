@@ -1,0 +1,50 @@
+/**
+ * Process JavaScript
+ * Handles the file processing functionality in step 3
+ */
+
+// Global variables
+let outputFilename = null;
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initProcessPage();
+});
+
+/**
+ * Initialize the process page
+ */
+function initProcessPage() {
+    // Initialize navigation buttons
+    const backButton = document.getElementById('back-to-step-2');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.location.href = '/configure';
+        });
+    }
+    
+    // Initialize file upload
+    initZipFileUpload();
+    
+    // Initialize process button
+    const startProcessingButton = document.getElementById('start-processing');
+    if (startProcessingButton) {
+        startProcessingButton.addEventListener('click', startProcessing);
+    }
+    
+    // Initialize download button
+    const downloadResultButton = document.getElementById('download-result');
+    if (downloadResultButton) {
+        downloadResultButton.addEventListener('click', downloadResult);
+    }
+    
+    // Initialize restart button
+    const restartProcessButton = document.getElementById('restart-process');
+    if (restartProcessButton) {
+        restartProcessButton.addEventListener('click', restartProcess);
+    }
+    
+    // Initialize fullscreen button
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', openFullscreenSlideshow);

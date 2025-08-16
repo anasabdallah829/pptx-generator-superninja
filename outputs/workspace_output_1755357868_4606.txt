@@ -1,0 +1,21 @@
+            showResults(data);
+            
+            // Show processing details
+            showProcessingDetails(data.details);
+            
+            // Hide upload section
+            const uploadContainer = document.querySelector('.upload-container');
+            if (uploadContainer) {
+                uploadContainer.style.display = 'none';
+            }
+            
+            // Hide additional options
+            const additionalOptions = document.querySelector('.additional-options');
+            if (additionalOptions) {
+                additionalOptions.style.display = 'none';
+            }
+            
+            // Hide process buttons
+            const processButtons = document.querySelector('.process-buttons');
+            if (processButtons) {
+                processButtons.style.display = 'none';

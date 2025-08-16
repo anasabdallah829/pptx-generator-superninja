@@ -1,0 +1,21 @@
+function startProcessing() {
+    const fileInput = document.getElementById('zip-upload');
+    const uploadProgress = document.getElementById('zip-upload-progress');
+    const uploadError = document.getElementById('zip-upload-error');
+    
+    if (!fileInput || !fileInput.files.length) {
+        if (uploadError) {
+            uploadError.textContent = 'الرجاء اختيار ملف مضغوط أولاً.';
+            uploadError.style.display = 'block';
+        }
+        return;
+    }
+    
+    const file = fileInput.files[0];
+    
+    // Hide error message if it was shown
+    if (uploadError) {
+        uploadError.style.display = 'none';
+    }
+    
+    // Show progress bar

@@ -1,0 +1,20 @@
+interactive_presentation/static/js/main.js: * Check if there are previous settings saved in localStorage
+interactive_presentation/static/js/main.js: * @returns {boolean} Whether previous settings exist
+interactive_presentation/static/js/main.js: * Save settings to localStorage
+interactive_presentation/static/js/main.js: * @param {Object} settings - The settings to save
+interactive_presentation/static/js/main.js:function saveSettings(settings) {
+interactive_presentation/static/js/main.js:        localStorage.setItem('presentationSettings', JSON.stringify(settings));
+interactive_presentation/static/js/main.js:        console.error('Error saving settings:', error);
+interactive_presentation/static/js/main.js: * Load settings from localStorage
+interactive_presentation/static/js/main.js: * @returns {Object|null} The loaded settings or null if not found
+interactive_presentation/static/js/main.js:        const settingsJson = localStorage.getItem('presentationSettings');
+interactive_presentation/static/js/main.js:        if (!settingsJson) return null;
+interactive_presentation/static/js/main.js:        return JSON.parse(settingsJson);
+interactive_presentation/static/js/main.js:        console.error('Error loading settings:', error);
+interactive_presentation/static/js/upload.js:    // Handle previous settings button
+interactive_presentation/static/js/upload.js:    const usePreviousSettingsButton = document.getElementById('use-previous-settings');
+interactive_presentation/static/js/upload.js: * Check if there are previous settings saved
+interactive_presentation/static/js/upload.js:    const previousSettingsContainer = document.getElementById('previous-settings-container');
+interactive_presentation/static/js/upload.js: * Use previous settings to generate the final output
+interactive_presentation/static/js/upload.js:    const settings = loadSettings();
+interactive_presentation/static/js/upload.js:    if (settings) {

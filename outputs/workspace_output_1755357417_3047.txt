@@ -1,0 +1,17 @@
+total 76
+drwxr-xr-x 5 root root  4096 Aug 16 15:15 .
+drwxr-xr-x 6 root root  4096 Aug 16 15:12 ..
+-rw-r--r-- 1 root root   403 Aug 16 15:10 .gitignore
+-rw-r--r-- 1 root root   423 Aug 16 15:10 Dockerfile
+-rw-r--r-- 1 root root  5071 Aug 16 15:10 README.md
+drwxr-xr-x 2 root root    41 Aug 16 15:15 __pycache__
+-rw-r--r-- 1 root root 20778 Aug 16 15:15 app.py
+-rw-r--r-- 1 root root   177 Aug 16 15:11 docker-compose.yml
+-rw-r--r-- 1 root root   279 Aug 16 15:12 install.bat
+-rw-r--r-- 1 root root    63 Aug 16 15:09 requirements.txt
+-rwxr-xr-x 1 root root   121 Aug 16 15:10 run.py
+-rw-r--r-- 1 root root   129 Aug 16 15:12 start.bat
+-rwxr-xr-x 1 root root   365 Aug 16 15:11 start.sh
+drwxr-xr-x 5 root root    57 Aug 16 14:59 static
+drwxr-xr-x 2 root root   104 Aug 16 15:02 templates
+-rwxr-xr-x 1 root root   853 Aug 16 15:11 test.py

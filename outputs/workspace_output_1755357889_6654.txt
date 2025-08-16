@@ -1,0 +1,84 @@
+                } else {
+                    showNotification(data.error || 'حدث خطأ أثناء استيراد الإعدادات!', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error importing settings:', error);
+                showNotification('حدث خطأ أثناء استيراد الإعدادات!', 'error');
+            });
+        } catch (error) {
+            console.error('Error parsing settings file:', error);
+            showNotification('ملف الإعدادات غير صالح!', 'error');
+        }
+    };
+    
+    reader.readAsText(file);
+}
+--
+        } else {
+            summaryHTML += `<div class="summary-item info">⏭️ صورة: لن يتم استبدالها</div>`;
+        }
+    }
+    
+    if (activeImages === 0) {
+        summaryHTML += '<div class="summary-item info">⚠️ لم يتم تحديد أي صور للاستبدال</div>';
+    }
+    
+    summaryHTML += '</div>';
+    
+    // Texts summary
+    summaryHTML += '<div class="summary-section">';
+    summaryHTML += '<h4>📝 إعدادات النصوص:</h4>';
+    
+    let activeTexts = 0;
+--
+        } else {
+            summaryHTML += `<div class="summary-item info">⏭️ نص: سيترك فارغاً</div>`;
+        }
+    }
+    
+    if (activeTexts === 0) {
+        summaryHTML += '<div class="summary-item info">ℹ️ جميع النصوص ستترك فارغة</div>';
+    }
+    
+    summaryHTML += '</div>';
+    
+    // Update the summary container
+    summaryContainer.innerHTML = summaryHTML;
+}
+
+/**
+--
+        } else {
+            // Show error
+            if (uploadError) {
+                uploadError.textContent = data.error || 'حدث خطأ أثناء معالجة الملفات.';
+                uploadError.style.display = 'block';
+            }
+            
+            // Hide progress bar
+            if (uploadProgress) {
+                uploadProgress.style.display = 'none';
+            }
+            
+            // Show processing details if available
+            if (data.details) {
+                showProcessingDetails(data.details);
+            }
+--
+            } else {
+                showNotification('حدث خطأ أثناء إعادة التشغيل', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error restarting process:', error);
+            showNotification('حدث خطأ أثناء إعادة التشغيل', 'error');
+        });
+}
+
+/**
+ * Show the previous slide
+ */
+function showPreviousSlide() {
+    const slides = document.querySelectorAll('#slideshow-content .slide');
+    if (!slides.length) return;

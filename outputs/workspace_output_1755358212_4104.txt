@@ -1,0 +1,4 @@
+    // TODO: Add preview slideshow functionality
+    const previewSlideshow = document.getElementById('preview-slideshow');
+    if (previewSlideshow) {
+        previewSlideshow.style.display = 'block';

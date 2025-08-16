@@ -1,0 +1,31 @@
+function hasPreviousSettings() {
+    return localStorage.getItem('presentationSettings') !== null;
+}
+
+/**
+ * Save settings to localStorage
+ * @param {Object} settings - The settings to save
+ */
+function saveSettings(settings) {
+    try {
+        localStorage.setItem('presentationSettings', JSON.stringify(settings));
+        console.log('Settings saved successfully');
+        return true;
+    } catch (error) {
+        console.error('Error saving settings:', error);
+        return false;
+    }
+}
+
+/**
+ * Load settings from localStorage
+ * @returns {Object|null} The loaded settings or null if not found
+ */
+function loadSettings() {
+    try {
+        const settingsJson = localStorage.getItem('presentationSettings');
+        if (!settingsJson) return null;
+        
+        return JSON.parse(settingsJson);
+    } catch (error) {
+        console.error('Error loading settings:', error);
